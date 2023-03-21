@@ -28,13 +28,13 @@ export default function Table({ data }: Props) {
       const updatedTableData = data.map((item) => {
         const gcPrice = parseFloat(item.gcPrice.replace(/[$,]/g, ''));
         const ebayPrice = parseFloat(item.ebayPrice.replace(/[$,]/g, ''));
-        let priceDifference = (gcPrice - ebayPrice).toFixed(2);
+        let priceDifference = (ebayPrice - gcPrice).toFixed(2);
         if (isNaN(Number(priceDifference))) {
           priceDifference = 'N/A';
         }
         return {
           ...item,
-          priceDifference: '$' + priceDifference // Round to 2 decimal places
+          priceDifference: priceDifference // Round to 2 decimal places
         };
       });
       setTableData(updatedTableData);
@@ -91,7 +91,7 @@ export default function Table({ data }: Props) {
           </th>
           <th onClick={() => sortByColumn(ColumnName.EbayPrice)}>Ebay Price</th>
           <th onClick={() => sortByColumn(ColumnName.PriceDifference)}>
-            Price Difference
+            Profit Difference
           </th>
         </tr>
       </thead>
@@ -106,7 +106,17 @@ export default function Table({ data }: Props) {
               <td>
                 <a href={item.ebayLink}>{item.ebayPrice}</a>
               </td>
-              <td>{item.priceDifference}</td>
+              <td
+                className={
+                  item.priceDifference == undefined ||
+                  Number(item.priceDifference) < 0 ||
+                  item.priceDifference == 'N/A'
+                    ? styles.negative
+                    : styles.positive
+                }
+              >
+                $ {item.priceDifference}
+              </td>
             </tr>
           ))
         )}

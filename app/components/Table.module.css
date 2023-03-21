@@ -25,7 +25,15 @@
   border-bottom: 0.1vw solid #ddd;
 }
 
-.table tbody tr {
+.table td.negative {
+  color: #ff0000;
+}
+
+.table td.positive {
+  color: #008f1f;
+}
+
+.table th .table tbody tr {
   border-bottom: 0.1vw solid #ddd;
 }
 
