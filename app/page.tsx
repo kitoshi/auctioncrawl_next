@@ -1,5 +1,4 @@
 'use client';
-import { Children } from 'react';
 import Table from './components/Table';
 import { useGlobalContext } from './context/GlobalContext';
 import styles from './page.module.css';

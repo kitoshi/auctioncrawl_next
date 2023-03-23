@@ -30,7 +30,7 @@ export default function Table({ data }: Props) {
         const ebayPrice = parseFloat(item.ebayPrice.replace(/[$,]/g, ''));
         let priceDifference = (ebayPrice - gcPrice).toFixed(2);
         if (isNaN(Number(priceDifference))) {
-          priceDifference = 'N/A';
+          priceDifference = '0.00';
         }
         return {
           ...item,
@@ -109,7 +109,7 @@ export default function Table({ data }: Props) {
               <td
                 className={
                   item.priceDifference == undefined ||
-                  Number(item.priceDifference) < 0 ||
+                  Number(item.priceDifference) <= 0 ||
                   item.priceDifference == 'N/A'
                     ? styles.negative
                     : styles.positive
