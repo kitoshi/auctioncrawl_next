@@ -14,14 +14,12 @@ export class ApiData {
 
   async fetchData(): Promise<void> {
     try {
-      console.log('attemping to pull from api');
       const response = await fetch(`/api/crawler`, { method: 'GET' });
       const data = await response.json();
-      console.log(data);
-      this._data = data[0].combinedList as CrawlerAPIObject[];
+      this._data = data.data[0].combinedList as CrawlerAPIObject[];
     } catch (error) {
       //todo handle error
-      console.log(`fetchData()` + error);
+      console.log(`crawler route error: ` + error);
     }
   }
 
