@@ -8,8 +8,8 @@ export async function GET(request: Request) {
     projectId: 'operating-ally-304222',
     storageBucket: 'operating-ally-304222.appspot.com',
     messagingSenderId: '163123713874',
-    appId: '1:163123713874:web:873eeb0d3bf94a1bb50c8b',
-    measurementId: 'G-7M88YG4B6H'
+    appId: '1:163123713874:web:58f2df16ad5e5a62b50c8b',
+    measurementId: 'G-S3EJM911CC'
   };
 
   // Initialize Firebase
